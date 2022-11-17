@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import PaywallSDKSample
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let builder = PaywallBuilder()
+        builder.setApiClient("apikeyyy")
+        builder.setApiKey("apicleentttt")
+        
+        builder.build()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
