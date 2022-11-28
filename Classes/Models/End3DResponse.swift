@@ -7,8 +7,8 @@
 
 import Foundation
 public struct End3DResponse: Decodable {
-    var ErrorCode: Int?
-    var Result: Bool?
-    var Message: String?
-    var Body: String?
+    public var ErrorCode: Int?
+    public var Result: Bool?
+    public var Message: String?
+    public var Body: String?
 }
