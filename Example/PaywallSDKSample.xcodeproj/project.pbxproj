@@ -45,7 +45,7 @@
 		B0E730AC78663D3D80B1AFC0 /* Pods-PaywallSDKSample_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaywallSDKSample_Example.release.xcconfig"; path = "Target Support Files/Pods-PaywallSDKSample_Example/Pods-PaywallSDKSample_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C17E2018B1FAA85B5018BDC9 /* Pods_PaywallSDKSample_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaywallSDKSample_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF215DB857412A4EAD03465 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		FBEC095F9FF117F0743C82C5 /* PaywallSDKSample.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PaywallSDKSample.podspec; path = ../PaywallSDKSample.podspec; sourceTree = "<group>"; };
+		FBEC095F9FF117F0743C82C5 /* PaywallSDKSample.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PaywallSDKSample.podspec; path = ../PaywallSDKSample.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FE7D4DD622CE2E8B6A93E6D4 /* Pods-PaywallSDKSample_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaywallSDKSample_Example.debug.xcconfig"; path = "Target Support Files/Pods-PaywallSDKSample_Example/Pods-PaywallSDKSample_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
