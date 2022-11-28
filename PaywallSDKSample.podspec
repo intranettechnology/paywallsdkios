@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 "A short description of PaywallSDKSample. Test Test Test Test Test"
                        DESC
 
-  s.homepage         = 'https://github.com/serkanintranet/PaywallSDKSample'
+  s.homepage         = 'https://github.com/intranettechnology/paywallsdkios.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'serkanintranet' => 'serkan@intranettechnology.com' }
