@@ -21,6 +21,7 @@ class Start3DApi{
         request.addValue("\(apiKey)", forHTTPHeaderField: "apikeypublic")
         request.addValue("\(apiClient)", forHTTPHeaderField: "apiclientpublic")
         let json = JSONSerializer.toJson(start3DPaymentRequestModel)
+        print("Json -> \(json)")
         request.httpBody = json.data(using: String.Encoding.utf8);
         // Perform HTTP Request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

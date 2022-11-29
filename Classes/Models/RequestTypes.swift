@@ -14,6 +14,9 @@ public enum RequestTypesEnum {
 }
 
 public class RequestTypes{
+    public init() {
+        
+    }
     public func getRequestType(type : RequestTypesEnum) -> Int{
         switch type {
         case .Version:

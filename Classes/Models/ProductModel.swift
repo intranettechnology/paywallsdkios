@@ -13,6 +13,7 @@ public struct ProductModel: Decodable {
     public var ProductCategory: String?
     public var ProductDescription: String?
     public var ProductAmount: Float?
+   
     public init(ProductId: String? = nil, ProductName: String? = nil, ProductCategory: String? = nil, ProductDescription: String? = nil, ProductAmount: Float? = nil) {
         self.ProductId = ProductId
         self.ProductName = ProductName
