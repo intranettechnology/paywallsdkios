@@ -8,13 +8,13 @@
 import Foundation
 
 public struct ProductModel: Decodable {
-    public var ProductId: String?
-    public var ProductName: String?
-    public var ProductCategory: String?
-    public var ProductDescription: String?
-    public var ProductAmount: Float?
+    public var ProductId: String
+    public var ProductName: String
+    public var ProductCategory: String
+    public var ProductDescription: String
+    public var ProductAmount: Float
    
-    public init(ProductId: String? = nil, ProductName: String? = nil, ProductCategory: String? = nil, ProductDescription: String? = nil, ProductAmount: Float? = nil) {
+    public init(ProductId: String = "nil", ProductName: String = "nil", ProductCategory: String = "nil", ProductDescription: String = "nil", ProductAmount: Float = Float(0)) {
         self.ProductId = ProductId
         self.ProductName = ProductName
         self.ProductCategory = ProductCategory
