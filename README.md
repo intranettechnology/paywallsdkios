@@ -27,3 +27,11 @@ serkanintranet, serkan@intranettechnology.com
 ## License
 
 PaywallSDKSample is available under the MIT license. See the LICENSE file for more info.
+
+## Usage
+
+Inherit 'PaywallListener' to ViewController for detect your functions result
+
+```ruby
+class ViewController: UIViewController, PaywallListener
+```
