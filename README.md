@@ -35,6 +35,19 @@ Inherit 'Paywall Listener' to ViewController for detect your functions result. I
 ```ruby
 class ViewController: UIViewController, PaywallListener
 
+    var builder: PaywallBuilder?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                .
+                .
+        builder.delegate = self
+                .
+                .
+        
+    }
+                .
+                .
     func OnSuccess(type: Int, response: Data?) {
         print("On Success \(type) - \(response)")
     }
@@ -42,4 +55,23 @@ class ViewController: UIViewController, PaywallListener
     func OnError(type: Int, message: String) {
         print("On Error \(type) - \(message)")
     }
+                .
+                .
+```
+
+To Initialize Paywall builder need to have apiclient and apikey. Than you can use all functions which PaywallSDK has.
+
+```ruby
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                    .
+                    .
+        let builder = PaywallBuilder()
+        builder.setApiClient("[YOUR_API_CLIENT]")
+        builder.setApiKey("[YOUR_API_KEY]")
+                    .
+                    .
+        
+    }
+
 ```
