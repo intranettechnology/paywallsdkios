@@ -30,6 +30,12 @@ PaywallSDKSample is available under the MIT license. See the LICENSE file for mo
 
 ## Usage
 
+Import 'PaywallSDKSample'
+
+```ruby
+import PaywallSDKSample
+```
+
 Inherit 'Paywall Listener' to ViewController for detect your functions result. It will override 2 function which are called 'OnSuccess' and 'OnError'.
 
 ```ruby
@@ -74,4 +80,76 @@ To Initialize Paywall builder need to have apiclient and apikey. Than you can us
         
     }
 
+```
+
+## Functions
+
+Version:
+```ruby
+   builder.getVersion() // get version information
+   
+   //Response
+   func OnSuccess(type: Int, response: Data?) {
+        DispatchQueue.main.async {
+            
+            switch type {
+                    .
+                    .
+            case RequestTypes().getRequestType(type: RequestTypesEnum.Version): // get version response
+                do{
+                    let responseData = try JSONDecoder().decode(PaywallSDKSample.VersionResponse.self, from: response!) //Convert Data to VersionResponseModel
+                    print("Version - \(responseData)")
+                } catch let err {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        print(err)
+                    }
+                }
+                    .
+                    .
+        }
+    }
+```
+Start3DPayment:
+
+First of all, you have to fill the "Start3DPaymentRequestModel" to start 3D Payment.
+
+```ruby
+public struct Start3DPaymentRequestModel: Decodable {
+    public var PaymentDetail: PaymentDetailModel
+    public var Card: CardModel
+    public var Customer: CustomerModel
+    public var Products: [ProductModel]
+    
+    public init(PaymentDetail: PaymentDetailModel = PaymentDetailModel(), Card: CardModel = CardModel(), Customer: CustomerModel = CustomerModel(), Products: [ProductModel] = [ProductModel()]) {
+        self.PaymentDetail = PaymentDetail
+        self.Card = Card
+        self.Customer = Customer
+        self.Products = Products
+    }
+}
+```
+
+```ruby
+   builder.start3D(start3DPaymentRequestModel: [YOUR_MODEL])() // get version information
+   
+   //Response
+   func OnSuccess(type: Int, response: Data?) {
+        DispatchQueue.main.async {
+            
+            switch type {
+                    .
+                    .
+            case RequestTypes().getRequestType(type: RequestTypesEnum.Start3D): // start3D response
+                do{
+                    let responseData = try JSONDecoder().decode(PaywallSDKSample.Start3DResponse.self, from: response!) //Convert Data to Start3DResponseModel
+                    print("Start3D - \(responseData)")
+                } catch let err {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        print(err)
+                    }
+                }
+                    .
+                    .
+        }
+    }
 ```
