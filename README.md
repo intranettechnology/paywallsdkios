@@ -32,13 +32,13 @@ PaywallSDKSample is available under the MIT license. See the LICENSE file for mo
 
 Import 'PaywallSDKSample'
 
-```ruby
+```swift
 import PaywallSDKSample
 ```
 
 Inherit 'Paywall Listener' to ViewController for detect your functions result. It will override 2 function which are called 'OnSuccess' and 'OnError'.
 
-```ruby
+```swift
 class ViewController: UIViewController, PaywallListener
 
     var builder: PaywallBuilder?
@@ -67,7 +67,7 @@ class ViewController: UIViewController, PaywallListener
 
 To Initialize Paywall builder need to have apiclient and apikey. Than you can use all functions which PaywallSDK has.
 
-```ruby
+```swift
     override func viewDidLoad() {
         super.viewDidLoad()
                     .
@@ -85,7 +85,7 @@ To Initialize Paywall builder need to have apiclient and apikey. Than you can us
 ## Functions
 
 Version:
-```ruby
+```swift
    builder.getVersion() // get version information
    
    //Response
@@ -113,7 +113,7 @@ Start3DPayment:
 
 First of all, you have to fill the "Start3DPaymentRequestModel" to start 3D Payment.
 
-```ruby
+```swift
 public struct Start3DPaymentRequestModel: Decodable {
     public var PaymentDetail: PaymentDetailModel
     public var Card: CardModel
@@ -129,7 +129,7 @@ public struct Start3DPaymentRequestModel: Decodable {
 }
 ```
 
-```ruby
+```swift
    builder.start3D(start3DPaymentRequestModel: [YOUR_MODEL])() // get version information
    
    //Response
