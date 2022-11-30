@@ -130,7 +130,7 @@ public struct Start3DPaymentRequestModel: Decodable {
 ```
 
 ```swift
-   builder.start3D(start3DPaymentRequestModel: [YOUR_MODEL])() // get version information
+   builder.start3D(start3DPaymentRequestModel: <#T##Start3DPaymentRequestModel#>)() // start 3D payment
    
    //Response
    func OnSuccess(type: Int, response: Data?) {
@@ -143,6 +143,9 @@ public struct Start3DPaymentRequestModel: Decodable {
                 do{
                     let responseData = try JSONDecoder().decode(PaywallSDKSample.Start3DResponse.self, from: response!) //Convert Data to Start3DResponseModel
                     print("Start3D - \(responseData)")
+                    
+                    responseData.Body?.RedirectUrl!! // You can open web page with 'RedirectUrl' to show 3D screen. 
+                    
                 } catch let err {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         print(err)
@@ -152,4 +155,54 @@ public struct Start3DPaymentRequestModel: Decodable {
                     .
         }
     }
+```
+
+End3DPayment:
+
+When you take response from 3D screen you have to call this request.
+
+Fill the "EndPaymentRequestModel" to End 3D Payment.
+
+```swift
+public struct EndPaymentRequestModel: Decodable {
+    public var MerchantUniqueCode: String?
+    public init(MerchantUniqueCode: String? = nil) {
+        self.MerchantUniqueCode = MerchantUniqueCode
+    }
+}
+```
+```swift
+builder?.end3D(endPaymentRequestModel: <#T##EndPaymentRequestModel#>) // end 3D payment
+
+//Response
+   func OnSuccess(type: Int, response: Data?) {
+        DispatchQueue.main.async {
+            
+            switch type {
+                    .
+                    .
+            case RequestTypes().getRequestType(type: RequestTypesEnum.End3D): // end3D response
+                do{
+                    let responseData = try JSONDecoder().decode(PaywallSDKSample.End3DResponse.self, from: response!) //Convert Data to End3DResponseModel
+                    print("End3D - \(responseData)")
+                    
+                } catch let err {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        print(err)
+                    }
+                }
+                    .
+                    .
+        }
+    }
+```
+
+Request Types:
+
+```swift
+public enum RequestTypesEnum {
+    case Version
+    case Start3D
+    case End3D
+}
 ```
