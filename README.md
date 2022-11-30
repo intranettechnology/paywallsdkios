@@ -30,8 +30,16 @@ PaywallSDKSample is available under the MIT license. See the LICENSE file for mo
 
 ## Usage
 
-Inherit 'PaywallListener' to ViewController for detect your functions result
+Inherit 'Paywall Listener' to ViewController for detect your functions result. It will override 2 function which are called 'OnSuccess' and 'OnError'.
 
 ```ruby
 class ViewController: UIViewController, PaywallListener
+
+    func OnSuccess(type: Int, response: Data?) {
+        print("On Success \(type) - \(response)")
+    }
+    
+    func OnError(type: Int, message: String) {
+        print("On Error \(type) - \(message)")
+    }
 ```
