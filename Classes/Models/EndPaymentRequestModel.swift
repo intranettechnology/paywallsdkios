@@ -9,4 +9,7 @@ import Foundation
 
 public struct EndPaymentRequestModel: Decodable {
     public var MerchantUniqueCode: String?
+    public init(MerchantUniqueCode: String? = nil) {
+        self.MerchantUniqueCode = MerchantUniqueCode
+    }
 }

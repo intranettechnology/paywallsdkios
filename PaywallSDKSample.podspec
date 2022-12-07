@@ -7,8 +7,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'PaywallSDKSample'
-  s.version          = '0.1.4'
+  s.name             = 'PaywallSDK'
+  s.version          = '0.1.5'
   s.summary          = 'A short description of PaywallSDKSample.'
 
 # This description is used to generate tags and improve search results.
