@@ -8,6 +8,6 @@
 import Foundation
 
 struct Constants {
-    var API_URL = "https://devpayment.itspaywall.com/api/paywall/"
+    var API_URL = "https://dev-payment-api.itspaywall.com/api/paywall/"
 }
 
