@@ -5,10 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/PaywallSDKSample.svg?style=flat)](https://cocoapods.org/pods/PaywallSDKSample)
 [![Platform](https://img.shields.io/cocoapods/p/PaywallSDKSample.svg?style=flat)](https://cocoapods.org/pods/PaywallSDKSample)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Requirements
 
 ## Installation
