@@ -11,9 +11,9 @@ class End3DApi{
     
     var delegate : PaywallListenerProtocol?
     
-    public func End3D(apiKey: String, apiClient: String, endPaymentRequestModel: EndPaymentRequestModel){
+    public func End3D(apiKey: String, apiClient: String, baseUrl: String, endPaymentRequestModel: EndPaymentRequestModel){
         
-        let url = URL(string: "\(Constants().API_URL)payment/end3d")
+        let url = URL(string: "\(baseUrl)payment/end3d")
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"

@@ -11,9 +11,9 @@ class Start3DApi{
     
     var delegate : PaywallListenerProtocol?
     
-    public func Start3D(apiKey: String, apiClient: String, start3DPaymentRequestModel: Start3DPaymentRequestModel){
+    public func Start3D(apiKey: String, apiClient: String, baseUrl: String, start3DPaymentRequestModel: Start3DPaymentRequestModel){
         
-        let url = URL(string: "\(Constants().API_URL)payment/start3d")
+        let url = URL(string: "\(baseUrl)payment/start3d")
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"

@@ -11,6 +11,7 @@ public class PaywallBuilder: PaywallListenerProtocol {
     
     public private(set) var apiKey: String = ""
     public private(set) var apiClient: String = ""
+    public private(set) var baseUrl: String = ""
     public var delegate : PaywallListener?
     
     public init() {
@@ -25,11 +26,15 @@ public class PaywallBuilder: PaywallListenerProtocol {
         self.apiClient = apiClient
     }
     
+    public func setBaseUrl(_ baseUrl: String) {
+        self.baseUrl = baseUrl
+    }
+    
     public func getVersion() {
         let versionApi: VersionApi = VersionApi()
         versionApi.delegate = self
         DispatchQueue.main.async {
-            versionApi.Version(apiKey: self.apiKey, apiClient: self.apiClient)
+            versionApi.Version(apiKey: self.apiKey, apiClient: self.apiClient, baseUrl: self.baseUrl)
         }
     }
     
@@ -37,7 +42,7 @@ public class PaywallBuilder: PaywallListenerProtocol {
         let start3DApi: Start3DApi = Start3DApi()
         start3DApi.delegate = self
         DispatchQueue.main.async {
-            start3DApi.Start3D(apiKey: self.apiKey, apiClient: self.apiClient, start3DPaymentRequestModel: start3DPaymentRequestModel)
+            start3DApi.Start3D(apiKey: self.apiKey, apiClient: self.apiClient, baseUrl: self.baseUrl, start3DPaymentRequestModel: start3DPaymentRequestModel)
         }
     }
     
@@ -45,7 +50,7 @@ public class PaywallBuilder: PaywallListenerProtocol {
         let end3DApi: End3DApi = End3DApi()
         end3DApi.delegate = self
         DispatchQueue.main.async {
-            end3DApi.End3D(apiKey: self.apiKey, apiClient: self.apiClient, endPaymentRequestModel: endPaymentRequestModel)
+            end3DApi.End3D(apiKey: self.apiKey, apiClient: self.apiClient, baseUrl: self.baseUrl, endPaymentRequestModel: endPaymentRequestModel)
         }
     }
     

@@ -30,7 +30,7 @@ class ViewController: UIViewController, PaywallListener {
         
         let start3DPaymentRequestModel = Start3DPaymentRequestModel(PaymentDetail: PaymentDetailModel(Amount: Float(1), MerchantUniqueCode: "54634573567356735", CurrencyId: 1, MerchantSuccessBackUrl: "https://www.google.com.tr", MerchantFailBackUrl: "https://www.google.com.tr", Installement: 1), Card: CardModel(OwnerName: "Enes Tütüncü", Number: "5218487962459752", ExpireMonth: "12", ExpireYear: "2026", Cvv: "000", UniqueCode: ""), Customer: CustomerModel(FullName: "FullName", Phone: "5336662211", Email: "enes@elekse.com", Country: "Country", City: "City", Address: "Address", IdentityNumber: "IdentityNumber", TaxNumber: "TaxNumber"), Products: products)
         
-        EndPaymentRequestModel
+        //EndPaymentRequestModel
         
         let json = JSONSerializer.toJson(start3DPaymentRequestModel)
                 

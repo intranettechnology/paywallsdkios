@@ -11,9 +11,9 @@ class VersionApi{
     
     var delegate : PaywallListenerProtocol?
     
-    public func Version(apiKey: String, apiClient: String){
+    public func Version(apiKey: String, apiClient: String, baseUrl: String){
         
-        let url = URL(string: "\(Constants().API_URL)payment/version")
+        let url = URL(string: "\(baseUrl)payment/version")
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
