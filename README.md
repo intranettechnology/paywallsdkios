@@ -41,15 +41,8 @@ class ViewController: UIViewController, PaywallListener
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                .
-                .
         builder.delegate = self
-                .
-                .
-        
     }
-                .
-                .
     func OnSuccess(type: Int, response: Data?) {
         print("On Success \(type) - \(response)")
     }
@@ -57,8 +50,6 @@ class ViewController: UIViewController, PaywallListener
     func OnError(type: Int, message: String) {
         print("On Error \(type) - \(message)")
     }
-                .
-                .
 ```
 
 To Initialize Paywall builder need to have apiclient and apikey. Than you can use all functions which PaywallSDK has.
@@ -66,13 +57,10 @@ To Initialize Paywall builder need to have apiclient and apikey. Than you can us
 ```swift
     override func viewDidLoad() {
         super.viewDidLoad()
-                    .
-                    .
+        
         let builder = PaywallBuilder()
         builder.setApiClient("[YOUR_API_CLIENT]")
         builder.setApiKey("[YOUR_API_KEY]")
-                    .
-                    .
         
     }
 
@@ -89,8 +77,6 @@ Version:
         DispatchQueue.main.async {
             
             switch type {
-                    .
-                    .
             case RequestTypes().getRequestType(type: RequestTypesEnum.Version): // get version response
                 do{
                     let responseData = try JSONDecoder().decode(PaywallSDKSample.VersionResponse.self, from: response!) //Convert Data to VersionResponseModel
@@ -100,8 +86,6 @@ Version:
                         print(err)
                     }
                 }
-                    .
-                    .
         }
     }
 ```
@@ -133,8 +117,6 @@ public struct Start3DPaymentRequestModel: Decodable {
         DispatchQueue.main.async {
             
             switch type {
-                    .
-                    .
             case RequestTypes().getRequestType(type: RequestTypesEnum.Start3D): // start3D response
                 do{
                     let responseData = try JSONDecoder().decode(PaywallSDKSample.Start3DResponse.self, from: response!) //Convert Data to Start3DResponseModel
@@ -147,8 +129,6 @@ public struct Start3DPaymentRequestModel: Decodable {
                         print(err)
                     }
                 }
-                    .
-                    .
         }
     }
 ```
@@ -175,8 +155,6 @@ builder?.end3D(endPaymentRequestModel: <#T##EndPaymentRequestModel#>) // end 3D 
         DispatchQueue.main.async {
             
             switch type {
-                    .
-                    .
             case RequestTypes().getRequestType(type: RequestTypesEnum.End3D): // end3D response
                 do{
                     let responseData = try JSONDecoder().decode(PaywallSDKSample.End3DResponse.self, from: response!) //Convert Data to End3DResponseModel
@@ -187,8 +165,6 @@ builder?.end3D(endPaymentRequestModel: <#T##EndPaymentRequestModel#>) // end 3D 
                         print(err)
                     }
                 }
-                    .
-                    .
         }
     }
 ```
