@@ -1,30 +1,25 @@
-# PaywallSDKSample
+# PaywallSDK
 
 [![CI Status](https://img.shields.io/travis/serkanintranet/PaywallSDKSample.svg?style=flat)](https://travis-ci.org/serkanintranet/PaywallSDKSample)
 [![Version](https://img.shields.io/cocoapods/v/PaywallSDKSample.svg?style=flat)](https://cocoapods.org/pods/PaywallSDKSample)
 [![License](https://img.shields.io/cocoapods/l/PaywallSDKSample.svg?style=flat)](https://cocoapods.org/pods/PaywallSDKSample)
 [![Platform](https://img.shields.io/cocoapods/p/PaywallSDKSample.svg?style=flat)](https://cocoapods.org/pods/PaywallSDKSample)
 
-## Requirements
+## Gereksinimler
 
-## Installation
+## Projeye Ekleme
 
-PaywallSDKSample is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Aşağıdaki kod satırını Podfile dosyanıza ekleyin
 
 ```ruby
 pod 'PaywallSDKSample'
 ```
 
-## Author
-
-serkanintranet, serkan@intranettechnology.com
-
-## License
+## Lisans
 
 PaywallSDKSample is available under the MIT license. See the LICENSE file for more info.
 
-## Usage
+## Kullanım
 
 Import 'PaywallSDKSample'
 
@@ -32,7 +27,7 @@ Import 'PaywallSDKSample'
 import PaywallSDKSample
 ```
 
-Inherit 'Paywall Listener' to ViewController for detect your functions result. It will override 2 function which are called 'OnSuccess' and 'OnError'.
+'Paywall Listener' protocolunu ViewController'unuza ekleyin. Başarılı veya başarısız sonuçları takip edebileceğiniz 2 fonksiyon ekleyecektir.
 
 ```swift
 class ViewController: UIViewController, PaywallListener
@@ -52,7 +47,7 @@ class ViewController: UIViewController, PaywallListener
     }
 ```
 
-To Initialize Paywall builder need to have apiclient and apikey. Than you can use all functions which PaywallSDK has.
+Paywall SDK'i kullanabilmek için Paywall paneli üzerinden erişebileceğiniz (yoksa oluşturabilirsiniz) "publicapikey" ve "publicapiclient" parametrelerine ihtiyacınız var. Bunlarla birlikte aşağıdaki şekilde PaywallBuilder' ı ilklendirebilirsiniz.
 
 ```swift
     override func viewDidLoad() {
@@ -66,20 +61,20 @@ To Initialize Paywall builder need to have apiclient and apikey. Than you can us
 
 ```
 
-## Functions
+## Fonksiyonlar
 
-Version:
+Versiyon:
 ```swift
-   builder.getVersion() // get version information
+   builder.getVersion() // versiyon bilgisini alın
    
    //Response
    func OnSuccess(type: Int, response: Data?) {
         DispatchQueue.main.async {
             
             switch type {
-            case RequestTypes().getRequestType(type: RequestTypesEnum.Version): // get version response
+            case RequestTypes().getRequestType(type: RequestTypesEnum.Version): // versiyon yanıtı
                 do{
-                    let responseData = try JSONDecoder().decode(PaywallSDKSample.VersionResponse.self, from: response!) //Convert Data to VersionResponseModel
+                    let responseData = try JSONDecoder().decode(PaywallSDKSample.VersionResponse.self, from: response!)
                     print("Version - \(responseData)")
                 } catch let err {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -89,9 +84,9 @@ Version:
         }
     }
 ```
-Start3DPayment:
+3D Ödeme başlat:
 
-First of all, you have to fill the "Start3DPaymentRequestModel" to start 3D Payment.
+3D ödeme başlatmak için "Start3DPaymentRequestModel" modelini doldurmanız gerekmektedir. Bu model içerisinde "PaymentDetail" objesindeki "MerchantUniqueCode" parametresine her defasında unique bir kod vermelisiniz. Bu kod daha sonra ödeme bitirme işleminde kullanılacaktır. "MerchantSuccessBackUrl" parametresinde, 3D ödeme ekranında başarılı sonuç alındığı takdirde kullanıcının ilerlemesini istediğiniz sayfa ve aynı zamanda sizin takip edeceğiniz bir url eklemeniz gerekmektedir. 3D ödeme ekranında alınan başarılı sonucun ardından aşağıdaki "3D Ödeme sonlandırma" adımları izlenmelidir. "MerchantFailBackUrl" parametresinde, 3D ödeme ekranında başarısız sonuç alındığı takdirde kullanıcının ilerlemesini istediğiniz sayfa ve aynı zamanda sizin takip edeceğiniz bir url eklemeniz gerekmektedir.
 
 ```swift
 public struct Start3DPaymentRequestModel: Decodable {
@@ -110,19 +105,19 @@ public struct Start3DPaymentRequestModel: Decodable {
 ```
 
 ```swift
-   builder.start3D(start3DPaymentRequestModel: <#T##Start3DPaymentRequestModel#>)() // start 3D payment
+   builder.start3D(start3DPaymentRequestModel: <#T##Start3DPaymentRequestModel#>)() // 3D ödeme başlat
    
    //Response
    func OnSuccess(type: Int, response: Data?) {
         DispatchQueue.main.async {
             
             switch type {
-            case RequestTypes().getRequestType(type: RequestTypesEnum.Start3D): // start3D response
+            case RequestTypes().getRequestType(type: RequestTypesEnum.Start3D): // 3D ödeme yanıtı
                 do{
-                    let responseData = try JSONDecoder().decode(PaywallSDKSample.Start3DResponse.self, from: response!) //Convert Data to Start3DResponseModel
+                    let responseData = try JSONDecoder().decode(PaywallSDKSample.Start3DResponse.self, from: response!) 
                     print("Start3D - \(responseData)")
                     
-                    responseData.Body?.RedirectUrl!! // You can open web page with 'RedirectUrl' to show 3D screen. 
+                    responseData.Body?.RedirectUrl!! // 'RedirectUrl' parametresiyle 3D ödeme ekranına ilerleyebilirsiniz.
                     
                 } catch let err {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -133,11 +128,12 @@ public struct Start3DPaymentRequestModel: Decodable {
     }
 ```
 
-End3DPayment:
+3D Ödeme sonlandırma:
 
-When you take response from 3D screen you have to call this request.
+3D Ödeme ekranından aldığınız başarılı yanıtın ardından 3D Ödeme metodunu çağırmalısınız. Bu metodunun yanıtında alacağınız başarısız veya başarılı bilgisi ödeme işleminin aynı zamanda sonucu olacaktır.
 
-Fill the "EndPaymentRequestModel" to End 3D Payment.
+3D Ödeme sonlandırmak için "EndPaymentRequestModel" modelini doldurmanız gerekmektedir. Bu modeldeki "MerchantUniqueCode", ödeme başlatırken kullandığınız kullandığınız "MerchantUniqueCode" parametresiyle aynı olmalıdır.
+
 
 ```swift
 public struct EndPaymentRequestModel: Decodable {
@@ -148,17 +144,16 @@ public struct EndPaymentRequestModel: Decodable {
 }
 ```
 ```swift
-builder?.end3D(endPaymentRequestModel: <#T##EndPaymentRequestModel#>) // end 3D payment
+builder?.end3D(endPaymentRequestModel: <#T##EndPaymentRequestModel#>) // Ödeme sonlandırma
 
 //Response
    func OnSuccess(type: Int, response: Data?) {
         DispatchQueue.main.async {
             
             switch type {
-            case RequestTypes().getRequestType(type: RequestTypesEnum.End3D): // end3D response
+            case RequestTypes().getRequestType(type: RequestTypesEnum.End3D): // Ödeme sonlandırma yanıtı
                 do{
-                    let responseData = try JSONDecoder().decode(PaywallSDKSample.End3DResponse.self, from: response!) //Convert Data to End3DResponseModel
-                    print("End3D - \(responseData)")
+                    let responseData = try JSONDecoder().decode(PaywallSDKSample.End3DResponse.self, from: response!) 
                     
                 } catch let err {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -169,7 +164,7 @@ builder?.end3D(endPaymentRequestModel: <#T##EndPaymentRequestModel#>) // end 3D 
     }
 ```
 
-Request Types:
+İstek Çeşitleri:
 
 ```swift
 public enum RequestTypesEnum {
